@@ -9,18 +9,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "Plot",
+    name: "LaTeXPlot",
     products: [
         .library(
-            name: "Plot",
-            targets: ["Plot"]
+            name: "LaTeXPlot",
+            targets: ["LaTeXPlot"]
         )
     ],
     targets: [
-        .target(name: "Plot"),
+        .target(name: "LaTeXPlot"),
         .testTarget(
-            name: "PlotTests",
-            dependencies: ["Plot"]
+            name: "LaTeXPlotTests",
+            dependencies: ["LaTeXPlot"]
         )
     ]
 )
