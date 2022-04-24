@@ -5,7 +5,7 @@
 */
 
 import XCTest
-import Plot
+import LaTeXPlot
 
 final class PodcastFeedTests: XCTestCase {
     func testEmptyFeed() {

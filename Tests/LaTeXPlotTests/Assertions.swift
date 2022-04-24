@@ -5,7 +5,7 @@
 */
 
 import XCTest
-import Plot
+import LaTeXPlot
 
 func assertEqualHTMLContent(
     _ document: HTML,

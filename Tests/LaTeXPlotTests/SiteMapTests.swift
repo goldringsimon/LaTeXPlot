@@ -5,7 +5,7 @@
 */
 
 import XCTest
-import Plot
+import LaTeXPlot
 
 final class SiteMapTests: XCTestCase {
     func testEmptyMap() {
