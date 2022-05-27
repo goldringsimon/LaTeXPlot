@@ -51,55 +51,6 @@ func assertEqualHTMLContent(
     )
 }
 
-func assertEqualSiteMapContent(
-    _ document: SiteMap,
-    _ content: String,
-    file: StaticString = #file,
-    line: UInt = #line
-) {
-    let map = document.render()
-
-    let expectedPrefix = XML().render() + """
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" \
-    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    """
-
-    let expectedSuffix = "</urlset>"
-
-    XCTAssertTrue(
-        map.hasPrefix(expectedPrefix),
-        """
-        Invalid SiteMap prefix.
-        Expected '\(expectedPrefix)'.
-        Found '\(map.prefix(expectedPrefix.count))'.
-        """,
-        file: file,
-        line: line
-    )
-
-    XCTAssertTrue(
-        map.hasSuffix(expectedSuffix),
-        """
-        Invalid SiteMap suffix.
-        Expected '\(expectedSuffix)'.
-        Found '\(map.suffix(expectedSuffix.count))'.
-        """,
-        file: file,
-        line: line
-    )
-
-    let expectedContent = map
-        .dropFirst(expectedPrefix.count)
-        .dropLast(expectedSuffix.count)
-
-    XCTAssertEqual(
-        String(expectedContent),
-        content,
-        file: file,
-        line: line
-    )
-}
-
 func assertEqualXMLContent(
     _ document: XML,
     _ content: String,
