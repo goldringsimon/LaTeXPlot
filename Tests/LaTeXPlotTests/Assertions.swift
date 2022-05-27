@@ -50,31 +50,3 @@ func assertEqualHTMLContent(
         line: line
     )
 }
-
-func assertEqualXMLContent(
-    _ document: XML,
-    _ content: String,
-    file: StaticString = #file,
-    line: UInt = #line
-) {
-    let xml = document.render()
-    let declaration = #"<?xml version="1.0" encoding="UTF-8"?>"#
-
-    XCTAssertTrue(
-        xml.hasPrefix(declaration),
-        """
-        Invalid XML declaration.
-        Expected '\(declaration)'.
-        Found '\(xml.prefix(declaration.count))'.
-        """,
-        file: file,
-        line: line
-    )
-
-    XCTAssertEqual(
-        String(xml.dropFirst(declaration.count)),
-        content,
-        file: file,
-        line: line
-    )
-}
