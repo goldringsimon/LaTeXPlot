@@ -5,7 +5,7 @@
 */
 
 import XCTest
-import LaTeXPlot
+import Plot
 
 final class DocumentTests: XCTestCase {
     func testEmptyDocument() {
