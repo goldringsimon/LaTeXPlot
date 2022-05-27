@@ -9,8 +9,8 @@ import Foundation
 /// A representation of an HTML document. Create an instance of this
 /// type to build a web page using Plot's type-safe DSL, and then
 /// call the `render()` method to turn it into an HTML string.
-public struct HTML: DocumentFormat {
-    private let document: Document<HTML>
+public struct LaTeX: DocumentFormat {
+    private let document: Document<LaTeX>
     private var environmentOverrides = [Environment.Override]()
 
     /// Create an HTML document with a collection of nodes that make
@@ -19,7 +19,7 @@ public struct HTML: DocumentFormat {
     /// sort of hierarchy of elements and attributes from there.
     /// - parameter nodes: The root nodes of the document, which will
     /// be placed inside of an `<html>` element.
-    public init(_ nodes: Node<HTML.DocumentContext>...) {
+    public init(_ nodes: Node<LaTeX.DocumentContext>...) {
         document = Document(elements: [
             .doctype("html"),
             .html(.group(nodes))
@@ -27,14 +27,14 @@ public struct HTML: DocumentFormat {
     }
 }
 
-public extension HTML {
+public extension LaTeX {
     /// Create an HTML document with a set of `<head>` nodes and a closure
     /// that defines the components that should make up its `<body>`.
     /// - parameter head: The nodes that should be placed within this HTML
     ///   document's `<head>` element.
     /// - parameter body: A closure that defines a set of components that
     ///   should be placed within this HTML document's `<body>` element.
-    init(head: [Node<HTML.HeadContext>] = [],
+    init(head: [Node<LaTeX.HeadContext>] = [],
          @ComponentBuilder body: @escaping () -> Component) {
         self.init(
             .if(!head.isEmpty, .head(.group(head))),
@@ -52,14 +52,14 @@ public extension HTML {
     /// - parameter key: The key to associate the value wth. You can either use any
     ///   of the built-in key definitions that Plot ships with, or define your own.
     ///   See `EnvironmentKey` for more information.
-    func environmentValue<T>(_ value: T, key: EnvironmentKey<T>) -> HTML {
+    func environmentValue<T>(_ value: T, key: EnvironmentKey<T>) -> LaTeX {
         var html = self
         html.environmentOverrides.append(.init(key: key, value: value))
         return html
     }
 }
 
-extension HTML: NodeConvertible {
+extension LaTeX: NodeConvertible {
     public var node: Node<Self> {
         if environmentOverrides.isEmpty {
             return document.node
@@ -73,7 +73,7 @@ extension HTML: NodeConvertible {
     }
 }
 
-public extension HTML {
+public extension LaTeX {
     /// The root context of an HTML document. Plot automatically
     /// creates all required elements within this context for you.
     enum RootContext {}

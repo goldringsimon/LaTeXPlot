@@ -124,7 +124,7 @@ public extension Node where Context: HTMLValueContext {
 
 // MARK: - Document
 
-public extension Node where Context == HTML.DocumentContext {
+public extension Node where Context == LaTeX.DocumentContext {
     /// Specify the language of the HTML document's content.
     /// - parameter language: The language to specify.
     static func lang(_ language: Language) -> Node {
@@ -134,7 +134,7 @@ public extension Node where Context == HTML.DocumentContext {
 
 // MARK: - Links
 
-public extension Attribute where Context == HTML.LinkContext {
+public extension Attribute where Context == LaTeX.LinkContext {
     /// Assign a relationship to the link. See `HTMLLinkRelationship` for more info.
     /// - parameter relationship: The relationship to assign.
     static func rel(_ relationship: HTMLLinkRelationship) -> Attribute {
@@ -176,7 +176,7 @@ public extension Node where Context: HTMLLinkableContext {
     }
 }
 
-public extension Node where Context == HTML.AnchorContext {
+public extension Node where Context == LaTeX.AnchorContext {
     /// Assign a target to the anchor, specifying how its URL should be opened.
     /// - parameter target: The target to assign. See `HTMLAnchorTarget`.
     static func target(_ target: HTMLAnchorTarget) -> Node {
@@ -193,7 +193,7 @@ public extension Node where Context == HTML.AnchorContext {
 
 // MARK: - Interactive elements
 
-public extension Node where Context == HTML.DetailsContext {
+public extension Node where Context == LaTeX.DetailsContext {
     /// Assign whether the details element is opened/expanded.
     /// - parameter isOpen: Whether the element should be displayed as open.
     static func open(_ isOpen: Bool) -> Node {
@@ -227,7 +227,7 @@ public extension Node where Context: HTMLMediaContext {
     }
 }
 
-public extension Attribute where Context == HTML.AudioSourceContext {
+public extension Attribute where Context == LaTeX.AudioSourceContext {
     /// Assign a type to this audio source. See `HTMLAudioFormat` for more info.
     /// - parameter format: The audio format to assign.
     static func type(_ format: HTMLAudioFormat) -> Attribute {
@@ -235,7 +235,7 @@ public extension Attribute where Context == HTML.AudioSourceContext {
     }
 }
 
-public extension Attribute where Context == HTML.VideoSourceContext {
+public extension Attribute where Context == LaTeX.VideoSourceContext {
     /// Assign a type to this video source. See `HTMLVideoFormat` for more info.
     /// - parameter format: The video format to assign.
     static func type(_ format: HTMLVideoFormat) -> Attribute {
@@ -243,7 +243,7 @@ public extension Attribute where Context == HTML.VideoSourceContext {
     }
 }
 
-public extension Attribute where Context == HTML.PictureSourceContext {
+public extension Attribute where Context == LaTeX.PictureSourceContext {
     /// Assign a string describing a set of sources, using the `srcset` attribute.
     /// - parameter set: The set of sources that this element should point to.
     static func srcset(_ set: String) -> Attribute {
@@ -265,7 +265,7 @@ public extension Attribute where Context == HTML.PictureSourceContext {
 
 // MARK: - Forms, input and options
 
-public extension Node where Context == HTML.FormContext {
+public extension Node where Context == LaTeX.FormContext {
     /// Assign a URL that this form should be sent to when submitted.
     /// - parameter url: The action URL that the form should be sent to.
     static func action(_ url: URLRepresentable) -> Node {
@@ -293,7 +293,7 @@ public extension Node where Context == HTML.FormContext {
     }
 }
 
-public extension Node where Context == HTML.LabelContext {
+public extension Node where Context == LaTeX.LabelContext {
     /// Assign which input control that this label is for.
     /// - parameter target: The target input control's name.
     static func `for`(_ target: String) -> Node {
@@ -301,7 +301,7 @@ public extension Node where Context == HTML.LabelContext {
     }
 }
 
-public extension Attribute where Context == HTML.InputContext {
+public extension Attribute where Context == LaTeX.InputContext {
     /// Assign an input type to the element.
     /// - parameter type: The input type to assign.
     static func type(_ type: HTMLInputType) -> Attribute {
@@ -357,7 +357,7 @@ public extension Attribute where Context == HTML.InputContext {
     }
 }
 
-public extension Node where Context == HTML.ButtonContext {
+public extension Node where Context == LaTeX.ButtonContext {
     /// Assign a button type to the element.
     /// - parameter type: The button type to assign.
     static func type(_ type: HTMLButtonType) -> Node {
@@ -365,7 +365,7 @@ public extension Node where Context == HTML.ButtonContext {
     }
 }
 
-public extension Node where Context == HTML.TextAreaContext {
+public extension Node where Context == LaTeX.TextAreaContext {
     /// Specify the number of columns that the text area should contain.
     /// - parameter columns: The number of columns to specify.
     static func cols(_ columns: Int) -> Node {
@@ -409,7 +409,7 @@ public extension Node where Context == HTML.TextAreaContext {
     }
 }
 
-public extension Attribute where Context == HTML.OptionContext {
+public extension Attribute where Context == LaTeX.OptionContext {
     /// Specify whether the option should be initially selected.
     /// - parameter isSelected: Whether the option should be selected.
     static func isSelected(_ isSelected: Bool) -> Attribute {
@@ -455,7 +455,7 @@ public extension Node where Context: HTMLStylableContext {
 
 // MARK: - Metadata
 
-public extension Attribute where Context == HTML.MetaContext {
+public extension Attribute where Context == LaTeX.MetaContext {
     /// Assign an encoding to the element, using its `charset` attribute.
     /// - parameter encoding: The encoding to assign. See `DocumentEncoding`.
     static func charset(_ encoding: DocumentEncoding) -> Attribute {
@@ -471,7 +471,7 @@ public extension Attribute where Context == HTML.MetaContext {
 
 // MARK: - iFrames
 
-public extension Attribute where Context == HTML.IFrameContext {
+public extension Attribute where Context == LaTeX.IFrameContext {
     /// Assign whether the iframe should display a border or not.
     /// - parameter isOn: Whether a border should be displayed.
     static func frameborder(_ isOn: Bool) -> Attribute {
@@ -493,7 +493,7 @@ public extension Attribute where Context == HTML.IFrameContext {
 
 // MARK: - Images
 
-public extension Attribute where Context == HTML.ImageContext {
+public extension Attribute where Context == LaTeX.ImageContext {
     /// Assign an alternative text to the image. This is important both for
     /// accessibility, and in case the referenced image can't be rendered.
     /// - parameter text: The alternative text to use.
@@ -504,7 +504,7 @@ public extension Attribute where Context == HTML.ImageContext {
 
 // MARK: - Accessibility
 
-public extension Node where Context: HTML.BodyContext {
+public extension Node where Context: LaTeX.BodyContext {
     /// Assign an accessibility label to the element, which is used by
     /// assistive technologies to get a text representation of it.
     /// - parameter label: The label to assign.
@@ -554,7 +554,7 @@ public extension Node where Context: HTMLIntegrityContext {
 
 // MARK: - Scripts
 
-public extension Node where Context == HTML.ScriptContext {
+public extension Node where Context == LaTeX.ScriptContext {
     /// Assign that the element's script should be loaded in `async` mode.
     static func async() -> Node {
         .attribute(named: "async", value: nil, ignoreIfValueIsEmpty: false)
@@ -568,7 +568,7 @@ public extension Node where Context == HTML.ScriptContext {
 
 // MARK: - Javascript
 
-public extension Node where Context: HTML.BodyContext {
+public extension Node where Context: LaTeX.BodyContext {
     /// Add a script to execute when the user clicks the current element.
     /// - parameter script: The script to execute when the user clicks on the node.
     ///   Usually prefixed with `javascript:`.

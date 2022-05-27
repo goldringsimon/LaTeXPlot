@@ -6,7 +6,7 @@
 
 // MARK: - Nodes
 
-public extension Node where Context == HTML.HeadContext {
+public extension Node where Context == LaTeX.HeadContext {
     /// Declare that the HTML page is encoded using a certain encoding.
     /// - parameter encoding: The encoding to declare. See `DocumentEncoding`.
     static func encoding(_ encoding: DocumentEncoding) -> Node {
@@ -390,7 +390,7 @@ public struct Image: Component {
     }
 
     public var body: Component {
-        Node<HTML.BodyContext>.img(.src(url), .alt(description))
+        Node<LaTeX.BodyContext>.img(.src(url), .alt(description))
     }
 }
 
@@ -518,7 +518,7 @@ public struct Link: Component {
     ///   - url: The URL that the link should point to.
     public init(_ label: String, url: URLRepresentable) {
         self.init(url: url) {
-            Node<HTML.BodyContext>.text(label)
+            Node<LaTeX.BodyContext>.text(label)
         }
     }
 
@@ -694,7 +694,7 @@ public struct TableRow: ComponentContainer {
         })
     }
 
-    fileprivate func convertToHeaderNode() -> Node<HTML.TableContext> {
+    fileprivate func convertToHeaderNode() -> Node<LaTeX.TableContext> {
         var row = self
         row.isHeader = true
         return row.convertToNode()
@@ -720,7 +720,7 @@ public struct Text: Component {
     }
 
     public var body: Component { node }
-    private var node: Node<HTML.BodyContext>
+    private var node: Node<LaTeX.BodyContext>
 
     /// Initialize a `Text` instance using a string
     /// - parameter string: The string of text that should be rendered.
@@ -728,7 +728,7 @@ public struct Text: Component {
         self.init(node: .text(string))
     }
 
-    private init(node: Node<HTML.BodyContext>) {
+    private init(node: Node<LaTeX.BodyContext>) {
         self.node = node
     }
 

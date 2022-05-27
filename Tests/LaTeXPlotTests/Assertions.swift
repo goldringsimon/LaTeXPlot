@@ -7,8 +7,8 @@
 import XCTest
 import LaTeXPlot
 
-func assertEqualHTMLContent(
-    _ document: HTML,
+func assertEqualLaTeXContent(
+    _ document: LaTeX,
     _ content: String,
     file: StaticString = #file,
     line: UInt = #line

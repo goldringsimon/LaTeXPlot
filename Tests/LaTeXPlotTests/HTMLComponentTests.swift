@@ -177,7 +177,7 @@ final class HTMLComponentTests: XCTestCase {
     }
 
     func testApplyingEnvironmentValuesToTopLevelHTML() {
-        let html = HTML(
+        let html = LaTeX(
             .body {
                 Link("One", url: "/one")
                 Link("Two", url: "/two")
@@ -185,7 +185,7 @@ final class HTMLComponentTests: XCTestCase {
         )
         .environmentValue(.nofollow, key: .linkRelationship)
 
-        assertEqualHTMLContent(html, """
+        assertEqualLaTeXContent(html, """
         <body>\
         <a href="/one" rel="nofollow">One</a>\
         <a href="/two" rel="nofollow">Two</a>\
@@ -266,7 +266,7 @@ final class HTMLComponentTests: XCTestCase {
     }
 
     func testElementBasedComponents() {
-        let html = HTML {
+        let html = LaTeX {
             Article("Article")
             Button("Button")
             Div("Div")
@@ -288,7 +288,7 @@ final class HTMLComponentTests: XCTestCase {
             TableHeaderCell("TableHeaderCell")
         }
 
-        assertEqualHTMLContent(html, """
+        assertEqualLaTeXContent(html, """
         <body>\
         <article>Article</article>\
         <button>Button</button>\
@@ -314,13 +314,13 @@ final class HTMLComponentTests: XCTestCase {
     }
 
     func testAudioPlayer() {
-        let html = HTML {
+        let html = LaTeX {
             AudioPlayer(source: .mp3(at: "a.mp3"), showControls: false)
             AudioPlayer(source: .wav(at: "b.wav"), showControls: true)
             AudioPlayer(source: .ogg(at: "c.ogg"), showControls: false)
         }
 
-        assertEqualHTMLContent(html, """
+        assertEqualLaTeXContent(html, """
         <body>\
         <audio><source type="audio/mpeg" src="a.mp3"/></audio>\
         <audio controls><source type="audio/wav" src="b.wav"/></audio>\
