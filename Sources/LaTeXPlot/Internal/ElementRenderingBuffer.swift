@@ -48,28 +48,29 @@ internal final class ElementRenderingBuffer {
 
         let whitespace = indentation?.string ?? ""
         let padding = element.paddingCharacter.map(String.init) ?? ""
-        var openingTag = "\(whitespace)<\(padding)\(element.name)"
+        var openingTag = "\(whitespace)\\\(padding)\(element.name)"
 
         for attribute in attributes {
             let string = attribute.render()
 
             if !string.isEmpty {
-                openingTag.append(" " + string)
+                openingTag.append("{" + string)
             }
         }
 
-        let openingTagSuffix = padding + ">"
+        let openingTagSuffix = padding + "}"
 
         switch element.closingMode {
         case .standard,
              .selfClosing where containsChildElements:
+			openingTag = "\n\\begin{\(element.name)"
             var string = openingTag + openingTagSuffix + body
 
             if indentation != nil && containsChildElements {
                 string.append("\n\(whitespace)")
             }
 
-            return string + "</\(element.name)>"
+            return string + "\n\\end{\(element.name)}"
         case .neverClosed:
             return openingTag + openingTagSuffix + body
         case .selfClosing:

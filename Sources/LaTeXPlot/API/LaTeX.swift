@@ -21,8 +21,8 @@ public struct LaTeX: DocumentFormat {
     /// be placed inside of an `<html>` element.
     public init(_ nodes: Node<LaTeX.DocumentContext>...) {
         document = Document(elements: [
-            .doctype("html"),
-            .html(.group(nodes))
+            .documentclass("article"),
+            .document(.group(nodes))
         ])
     }
 }

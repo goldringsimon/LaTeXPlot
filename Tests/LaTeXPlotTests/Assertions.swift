@@ -14,8 +14,10 @@ func assertEqualLaTeXContent(
     line: UInt = #line
 ) {
     let html = document.render()
-    let expectedPrefix = "<!DOCTYPE html><html>"
-    let expectedSuffix = "</html>"
+//    let expectedPrefix = "<!DOCTYPE html><html>"
+//    let expectedSuffix = "</html>"
+	let expectedPrefix = "\\begin{document}"
+	let expectedSuffix = "\n\\end{document}"
 
     XCTAssertTrue(
         html.hasPrefix(expectedPrefix),

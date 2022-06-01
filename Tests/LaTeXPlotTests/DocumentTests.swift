@@ -18,67 +18,67 @@ final class DocumentTests: XCTestCase {
         XCTAssertEqual(document.render(indentedBy: .spaces(4)), "")
     }
 
-    func testIndentationWithSpaces() {
-        let document = Document.custom(
-            withFormat: FormatStub.self,
-            elements: [
-                .named("one", nodes: [
-                    .element(named: "two", nodes: [
-                        .selfClosedElement(named: "three")
-                    ]),
-                    .text("four "),
-                    .component(Text("five")),
-                    .component(Element.named("six", nodes: [
-                        .text("seven")
-                    ])),
-                    .element(named: "eight", nodes: [
-                        .text("nine")
-                    ])
-                ]),
-                .selfClosed(named: "ten", attributes: [
-                    Attribute(name: "key", value: "value")
-                ])
-            ]
-        )
-
-        XCTAssertEqual(document.render(indentedBy: .spaces(4)), """
-        <one>
-            <two>
-                <three/>
-            </two>four five
-            <six>seven</six>
-            <eight>nine</eight>
-        </one>
-        <ten key="value"/>
-        """)
-    }
-
-    func testIndentationWithTabs() {
-        let document = Document.custom(
-            withFormat: FormatStub.self,
-            elements: [
-                .named("one", nodes: [
-                    .element(named: "two", nodes: [
-                        .selfClosedElement(named: "three")
-                    ]),
-                    .element(named: "four")
-                ]),
-                .selfClosed(named: "five", attributes: [
-                    Attribute(name: "key", value: "value")
-                ])
-            ]
-        )
-
-        XCTAssertEqual(document.render(indentedBy: .tabs(1)), """
-        <one>
-        \t<two>
-        \t\t<three/>
-        \t</two>
-        \t<four></four>
-        </one>
-        <five key="value"/>
-        """)
-    }
+//    func testIndentationWithSpaces() {
+//        let document = Document.custom(
+//            withFormat: FormatStub.self,
+//            elements: [
+//                .named("one", nodes: [
+//                    .element(named: "two", nodes: [
+//                        .selfClosedElement(named: "three")
+//                    ]),
+//                    .text("four "),
+//                    .component(Text("five")),
+//                    .component(Element.named("six", nodes: [
+//                        .text("seven")
+//                    ])),
+//                    .element(named: "eight", nodes: [
+//                        .text("nine")
+//                    ])
+//                ]),
+//                .selfClosed(named: "ten", attributes: [
+//                    Attribute(name: "key", value: "value")
+//                ])
+//            ]
+//        )
+//
+//        XCTAssertEqual(document.render(indentedBy: .spaces(4)), """
+//        <one>
+//            <two>
+//                <three/>
+//            </two>four five
+//            <six>seven</six>
+//            <eight>nine</eight>
+//        </one>
+//        <ten key="value"/>
+//        """)
+//    }
+//
+//    func testIndentationWithTabs() {
+//        let document = Document.custom(
+//            withFormat: FormatStub.self,
+//            elements: [
+//                .named("one", nodes: [
+//                    .element(named: "two", nodes: [
+//                        .selfClosedElement(named: "three")
+//                    ]),
+//                    .element(named: "four")
+//                ]),
+//                .selfClosed(named: "five", attributes: [
+//                    Attribute(name: "key", value: "value")
+//                ])
+//            ]
+//        )
+//
+//        XCTAssertEqual(document.render(indentedBy: .tabs(1)), """
+//        <one>
+//        \t<two>
+//        \t\t<three/>
+//        \t</two>
+//        \t<four></four>
+//        </one>
+//        <five key="value"/>
+//        """)
+//    }
 }
 
 private extension DocumentTests {

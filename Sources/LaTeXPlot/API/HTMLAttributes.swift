@@ -130,6 +130,14 @@ public extension Node where Context == LaTeX.DocumentContext {
     static func lang(_ language: Language) -> Node {
         .attribute(named: "lang", value: language.rawValue)
     }
+	
+	static func documentclass(_ documentclass: DocumentClass) -> Node {
+		.attribute(named: documentclass.rawValue)
+	}
+}
+
+public enum DocumentClass: String {
+	case article
 }
 
 // MARK: - Links

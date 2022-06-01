@@ -22,19 +22,19 @@ public extension Element where Context == LaTeX.RootContext {
     /// You typically never have to call this API yourself, since Plot
     /// will automatically add this declaration at the top of all HTML
     /// documents that are created using the `HTML` type's initializer.
-    static func doctype(_ type: String) -> Element {
-        Element(name: "!DOCTYPE", closingMode: .neverClosed, nodes: [
-            Node<LaTeX.RootContext>.attribute(named: type)
+    static func documentclass(_ documentclass: String) -> Element {
+        Element(name: "documentclass", closingMode: .neverClosed, nodes: [
+            Node<LaTeX.RootContext>.attribute(named: documentclass)
         ])
     }
 
-    /// Add a root `<html>` element to the document.
+    /// Add a root `\documentClass{}` element to the document.
     /// - parameter nodes: The element's attributes and child elements.
     /// You typically never have to call this API yourself, since Plot
     /// will automatically add this element at the root of all HTML
     /// documents that are created using the `HTML` type's initializer.
-    static func html(_ nodes: Node<LaTeX.DocumentContext>...) -> Element {
-        Element(name: "html", nodes: nodes)
+    static func document(_ nodes: Node<LaTeX.DocumentContext>...) -> Element {
+        Element(name: "document", nodes: nodes)
     }
 }
 
